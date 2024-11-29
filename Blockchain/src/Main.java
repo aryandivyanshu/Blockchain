@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
@@ -11,17 +12,18 @@ public class Main {
 
      */
 
-
-
+    ArrayList<Block> blockchain = new ArrayList();
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
+    String[] genesisTransaction ={"div sent 10 btc to ivan", "ivan sent 10 btc to div"};
+        Block genesisBlock = new Block(0, genesisTransaction);
+        System.out.println("Hash of genesis block is: ");
+        System.out.println(genesisBlock.getBlockHash());
 
-        String[] list1 ={"a", "b"};
-        String[] list2 ={"a", "b"};
+    String[] transaction2 = {"div sent 20 btc to ivan", "ivan sent 30 btc to div"};
+        Block block2 = new Block(genesisBlock.getBlockHash(), transaction2);
+        System.out.println("Hash of block 2 is: ");
+        System.out.println(block2.getBlockHash());
 
-
-        System.out.println(Arrays.hashCode(list1));
-        System.out.println(Arrays.hashCode(list2));
     }
 }
